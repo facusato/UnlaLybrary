@@ -7,6 +7,12 @@ public class ViewRouteHelper {
 	//   HOME
 	public final static String HOME_INDEX = "home/index";
 	
+//  CONTACTO
+	public final static String CONTACT_INDEX = "contact/index";
+	
+	public final static String FORM_INDEX = "form/index";
+	
+	
 // UNIVERSIDAD
 	
     public final static String UNIVERSITY_INDEX = "university/index";
