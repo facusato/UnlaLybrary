@@ -1,0 +1,25 @@
+html {
+    position: relative;
+    min-height: 100%;
+    background-image: url(https://4.bp.blogspot.com/-bfO9aQuzYOQ/WkLDuKIpuvI/AAAAAAAAz_8/2kojM3F0dSIkNz3n-A8FMSF3WSpm5_BbACLcBGAs/s1600/Sitios%2Bweb%2By%2Bbibliotecas%2Bpara%2Bdescargar%2Blibros%2Bgratis.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.title {
+	margin-top:50px;
+	margin-left: 35%;
+}
+
+.card {
+	margin-top:250px;
+	margin-left:600px;
+	float:left;
+}
+
+.card img {
+	width:286px;
+	height:160.81px;
+
+	}
+	
