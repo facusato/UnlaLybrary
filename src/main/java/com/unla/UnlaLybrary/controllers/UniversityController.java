@@ -2,6 +2,7 @@ package com.unla.UnlaLybrary.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -31,6 +32,7 @@ public class UniversityController {
 		return mAV;
 	}
 	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/new")
 	public ModelAndView create() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.UNIVERSITY_NEW);
@@ -39,7 +41,7 @@ public class UniversityController {
 	}
 	
 	
-	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping("/create")
 	public RedirectView create(@ModelAttribute("university") UniversityModel universityModel) {
 		universityService.insertOrUpdate(universityModel);
@@ -54,13 +56,15 @@ public class UniversityController {
 	}
 	
 
-	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping("/update")
 	public RedirectView update(@ModelAttribute("university") UniversityModel universityModel) {
 		universityService.insertOrUpdate(universityModel);
 		return new RedirectView(ViewRouteHelper.UNIVERSITY_ROOT);
 	}
 	
+	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping("/delete/{id}")
 	public RedirectView delete(@PathVariable("id") long id) {
 		universityService.remove(id);
