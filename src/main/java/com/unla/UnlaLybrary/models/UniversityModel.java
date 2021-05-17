@@ -7,7 +7,7 @@ public class UniversityModel {
 	private long id;
 	private String name;
 	
-public UniversityModel() {}
+	public UniversityModel() {}
 	
 	public UniversityModel(long id, String name) {
 		this.setId(id);
