@@ -12,6 +12,12 @@ public class ViewRouteHelper {
 	
 	public final static String FORM_INDEX = "form/index";
 	
+
+	
+	public final static String FILE_UPLOAD = "file/uploadFileView";
+	
+	
+	
 	
 // UNIVERSIDAD
 	
