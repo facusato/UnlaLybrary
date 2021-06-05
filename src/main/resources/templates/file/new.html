@@ -14,12 +14,13 @@
                 <a class="py-2 d-md-inline-block" href="/university">Adm.Universidades</a> 
                 <a class="py-2 d-md-inline-block" href="/career">Adm.Carreras</a>
                  <a class="py-2 d-md-inline-block" href="/subject">Adm.Materias</a>
+                 <a class="py-2 d-md-inline-block" href="/file">Adm.Apuntes</a>
             </div>
         </nav>
         
-        <h2>Agregar Materia</h2>
+        <h2>Agregar Apunte</h2>
 <div class="card bg-light col-md-7 mt-5 p-3 mx-auto">
-        <form action="#" th:action="@{/subject/create}" th:object="${subject}" method="post">
+        <form action="#" th:action="@{/file/create}" th:object="${file}" method="post">
             
            
             <div class="form-group">
@@ -28,23 +29,20 @@
                 <div class="invalid-feedback"></div>
             </div>
             
-            <div class="form-group">
-                <label for="career">Carrera</label>
-                <select placeholder="career" th:field="*{career.idCareer}">
-	            <option th:each="c : ${careers}" th:value="${c.idCareer}" th:text="${c.name}"></option>
+             <div class="form-group">
+                <label for="subject">Materia</label>
+                <select placeholder="subject" th:field="*{subject.idSubject}">
+	            <option th:each="s : ${subjects}" th:value="${s.idSubject}" th:text="${s.name}"></option>
 	             </select>     
             </div>
-            
-
-        
-            
+           
             <br>
             <button type="submit" class="btn btn-dark px-4">
                 <i class="far fa-plus-square fa-lg mr-2"></i>
-                Agregar Materia
+                Agregar Apunte
             </button>
-            <a href="/subject" class="btn btn-outline-secondary ml-3">
-                Volver al panel de Materias
+            <a href="/file" class="btn btn-outline-secondary ml-3">
+                Volver al panel de Apuntes
             </a>
 
 

@@ -18,7 +18,7 @@ import java.util.List;
 
 
 @Controller
-@RequestMapping("/file")
+@RequestMapping("/uploadfile")
 public class UploadFileController {
 
     @Autowired
@@ -26,7 +26,7 @@ public class UploadFileController {
 
     @GetMapping("")
     public ModelAndView index(){
-    	ModelAndView mAV = new ModelAndView(ViewRouteHelper.FILE_UPLOAD);
+    	ModelAndView mAV = new ModelAndView(ViewRouteHelper.FILE_UPLOADD);
     	return mAV;
 	
     }

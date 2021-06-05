@@ -29,13 +29,43 @@
                 <input type="text" class="form-control" name="name"  value="" th:field="*{name}" placeholder="Escribir el nombre..." >
             </div>
             
+            <div class="form-group">
+                <label for="career">Carrera</label>
+                <select placeholder="career" th:field="*{career.idCareer}">
+	            <option th:each="c : ${careers}" th:value="${c.idCareer}" th:text="${c.name}"></option>
+	             </select>     
+            </div>
+            
              
 	<input class="update" type="submit" value="Editar Materia" />
 </form>
 <form action="#" th:action="@{/subject/delete/{idSubject}(idSubject=${subject.idSubject})}" method="post">
 	<input class="btn btn-danger float-left ml-3  " type="submit" value="Borrar Materia" />
 </form>
-
+<br>
+		<br>
+		<h4>Apuntes</h4>
+     <table class="table table-bordered table-stripped table-hover table-sm">
+	<thead class="thead-dark">
+		<tr>
+		            <th>Nombre</th>
+                   
+                    <th colspan="2" class="text-center">
+			<a href="/file/new" class="btn btn-success px-4"> 
+			<i class="far fa-plus-square fa-lg mr-2"></i> Agregar
+			</a></th>   
+		</tr>
+		</thead>
+	<tbody>
+		<tr th:each="file : ${files}">
+		    <td><span th:text="${file.name}"/></span></td>
+			
+			<td><a th:href="@{/file/{idFile}(idFile=${file.idFile})}"
+				class="btn btn-info px-4"><i
+					class="far fa-edit fa-lg mr-1"></i> Ver Apuntes</a></td>
+		</tr>
+	  </tbody>
+     </table>
 </div>
 
     
