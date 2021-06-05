@@ -12,12 +12,11 @@
                 </a>
                 <a class="py-2 d-md-inline-block" href="/university">Adm.Universidades</a> 
                 <a class="py-2 d-md-inline-block" href="/career">Adm.Carreras</a> 
-                <a class="py-2 d-md-inline-block" href="/subject">Adm.Materias</a>
-        
+       			 <a class="py-2 d-md-inline-block" href="/subject">Adm.Materias</a>
                
             </div>
         </nav>
-        <h2>Administraci&oacute;n de Universidades</h2>
+        <h2>Administraci&oacute;n de Materias</h2>
      <table class="table table-bordered table-stripped table-hover table-sm">
      
             <thead class="thead-dark">
@@ -25,20 +24,20 @@
                     <th>Nombre</th>
                    
                     <th colspan="2" class="text-center">
-                        <a href="/university/new" class="btn btn-outline-light px-4">
+                        <a href="/subject/new" class="btn btn-outline-light px-4">
                             <i class="far fa-plus-square fa-lg mr-2"></i>
                             Agregar
                         </a>
                     </th>
                 </tr>
 	<tbody>
-		<tr th:each="university : ${universities}">
-			<td><span th:text="${university.name}" /></td>
+		<tr th:each="subject : ${subjects}">
+			<td><span th:text="${subject.name}" /></td>
 			
 			<td>
-                        <a th:href="@{/university/{id}(id=${university.id})}" class="btn btn-outline-secondary px-4">
+                        <a th:href="@{/subject/{idSubject}(idSubject=${subject.idSubject})}" class="btn btn-outline-secondary px-4">
                             <i class="far fa-edit fa-lg mr-1"></i>
-                            Ver Carreras
+                            Ver Apuntes
                         </a>
                         
                  
