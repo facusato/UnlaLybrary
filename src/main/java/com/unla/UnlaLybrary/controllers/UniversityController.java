@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.unla.UnlaLybrary.models.UniversityModel;
+import com.unla.UnlaLybrary.service.ICareerService;
 import com.unla.UnlaLybrary.service.IUniversityService;
 import com.unla.UnlaLybrary.helpers.ViewRouteHelper;
 
@@ -24,6 +25,10 @@ public class UniversityController {
 	@Autowired
 	@Qualifier("universityService")
 	private IUniversityService universityService;
+	
+	@Autowired
+	@Qualifier("careerService")
+	private ICareerService careerService;
 	
 	@GetMapping("")
 	public ModelAndView index() {
@@ -37,6 +42,7 @@ public class UniversityController {
 	public ModelAndView create() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.UNIVERSITY_NEW);
 		mAV.addObject("university", new UniversityModel());
+		mAV.addObject("careers",careerService.getAlls());
 		return mAV;
 	}
 	
@@ -44,7 +50,7 @@ public class UniversityController {
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping("/create")
 	public RedirectView create(@ModelAttribute("university") UniversityModel universityModel) {
-		universityService.insertOrUpdate(universityModel);
+		universityService.insert(universityModel);
 		return new RedirectView(ViewRouteHelper.UNIVERSITY_ROOT);
 	}
 	
@@ -52,6 +58,7 @@ public class UniversityController {
 	public ModelAndView get(@PathVariable("id") long id) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.UNIVERSITY_UPDATE);
 		mAV.addObject("university", universityService.findById(id));
+		mAV.addObject("careers", careerService.findByIdUniversity(id));
 		return mAV;
 	}
 	
@@ -59,7 +66,7 @@ public class UniversityController {
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping("/update")
 	public RedirectView update(@ModelAttribute("university") UniversityModel universityModel) {
-		universityService.insertOrUpdate(universityModel);
+		universityService.update(universityModel);
 		return new RedirectView(ViewRouteHelper.UNIVERSITY_ROOT);
 	}
 	

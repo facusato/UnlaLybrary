@@ -13,9 +13,9 @@ public class ViewRouteHelper {
 	public final static String FORM_INDEX = "form/index";
 	
 
-	
+	//public final static String FILE_UPLOAD = "file/index";
 	public final static String FILE_UPLOAD = "file/uploadFileView";
-	
+	public final static String FILE_DOWNLOAD = "file/showFile";
 	
 	
 	
@@ -25,11 +25,18 @@ public class ViewRouteHelper {
 	public final static String UNIVERSITY_NEW = "university/new";
 	public final static String UNIVERSITY_UPDATE = "university/update";
 	
+// CARRERA
+	
+    public final static String CAREER_INDEX = "career/index";
+	public final static String CAREER_NEW = "career/new";
+	public final static String CAREER_UPDATE = "career/update";
+	
 	//
 	public final static String USER_LOGIN="user/login";
 	public final static String USER_LOGOUT="user/logout";
 	
 	/**** Redirects ****/
 	public final static String UNIVERSITY_ROOT = "/university";
+	public final static String CAREER_ROOT = "/career";
 	
 }

@@ -15,7 +15,9 @@ public interface IUniversityService {
 	
 	public UniversityModel findByName(String name);
 	
-	public UniversityModel insertOrUpdate(UniversityModel universityModel);
+	public UniversityModel insert(UniversityModel universityModel);
+	
+	public UniversityModel update(UniversityModel universityModel);
 	
 	public boolean remove(long id);
 	

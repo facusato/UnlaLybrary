@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 
 import com.unla.UnlaLybrary.entities.University;
 
-	@Repository("universityRepository")
-	public interface IUniversityRepository extends JpaRepository<University, Serializable> {
+@Repository("universityRepository")
+public interface IUniversityRepository extends JpaRepository<University, Serializable> {
 		
 		public abstract University findById(long id);
 		
