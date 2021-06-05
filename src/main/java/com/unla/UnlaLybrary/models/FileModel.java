@@ -2,24 +2,50 @@ package com.unla.UnlaLybrary.models;
 
 public class FileModel {
 	
-	private String name;
-	private String url;
+	private long idFile;
 	
-	public FileModel(String name, String url) {
+	private String name;
+	
+	private SubjectModel subject;
+	
+	public FileModel() {}
+	
+	
+
+	public FileModel(long idFile, String name, SubjectModel subject) {
+		this.setIdFile(idFile);
 		this.name = name;
-		this.url = url;
+		this.subject = subject;
 	}
+
+
+
+	public long getIdFile() {
+		return idFile;
+	}
+
+	public void setIdFile(long idFile) {
+		this.idFile = idFile;
+	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getUrl() {
-		return url;
+
+	public SubjectModel getSubject() {
+		return subject;
 	}
-	public void setUrl(String url) {
-		this.url = url;
+
+	public void setSubject(SubjectModel subject) {
+		this.subject = subject;
 	}
+	
+	
+	
+	
 
 }

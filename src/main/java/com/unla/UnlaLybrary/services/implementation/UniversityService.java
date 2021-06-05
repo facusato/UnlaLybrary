@@ -31,7 +31,13 @@ public class UniversityService implements IUniversityService {
 		}
 
 		@Override
-		public UniversityModel insertOrUpdate(UniversityModel universityModel) {
+		public UniversityModel insert(UniversityModel universityModel) {
+			University university= universityRepository.save(universityConverter.modelToEntity(universityModel));
+			return universityConverter.entityToModel(university);
+		}
+		
+		@Override
+		public UniversityModel update(UniversityModel universityModel) {
 			University university= universityRepository.save(universityConverter.modelToEntity(universityModel));
 			return universityConverter.entityToModel(university);
 		}
