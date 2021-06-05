@@ -25,6 +25,7 @@
 			</a> 
 			 <a class="py-2 d-md-inline-block" href="/university">Adm.Universidades</a> 
 			  <a class="py-2 d-md-inline-block" href="/career">Adm.Carreras</a> 
+			  <a class="py-2 d-md-inline-block" href="/subject">Adm.Materias</a> 
                  
                       <a aria-expanded="false"
 						aria-haspopup="true" class="nav-link dropdown-toggle"
@@ -67,7 +68,32 @@
 			
 			<input class="btn btn-danger float-left ml-3" type="submit" value="Borrar Carrera" />
 		</form>
-	</div>
-</body>
+	<br>
+		<br>
+		<h4>Materias</h4>
+     <table class="table table-bordered table-stripped table-hover table-sm">
+	<thead class="thead-dark">
+		<tr>
+		            <th>Nombre</th>
+                   
+                    <th colspan="2" class="text-center">
+			<a href="/subject/new" class="btn btn-success px-4"> 
+			<i class="far fa-plus-square fa-lg mr-2"></i> Agregar
+			</a></th>   
+		</tr>
+		</thead>
+	<tbody>
+		<tr th:each="subject : ${subjects}">
+		    <td><span th:text="${subject.name}"/></span></td>
+			
+			<td><a th:href="@{/subject/{idSubject}(idSubject=${subject.idSubject})}"
+				class="btn btn-info px-4"><i
+					class="far fa-edit fa-lg mr-1"></i> Ver Materias</a></td>
+		</tr>
+	  </tbody>
+     </table>
+</div>
 
+    
+    </body>
 </html>

@@ -31,6 +31,12 @@ public class ViewRouteHelper {
 	public final static String CAREER_NEW = "career/new";
 	public final static String CAREER_UPDATE = "career/update";
 	
+// Materia
+	
+    public final static String SUBJECT_INDEX = "subject/index";
+	public final static String SUBJECT_NEW = "subject/new";
+	public final static String SUBJECT_UPDATE = "subject/update";
+	
 	//
 	public final static String USER_LOGIN="user/login";
 	public final static String USER_LOGOUT="user/logout";
@@ -38,5 +44,6 @@ public class ViewRouteHelper {
 	/**** Redirects ****/
 	public final static String UNIVERSITY_ROOT = "/university";
 	public final static String CAREER_ROOT = "/career";
+	public final static String SUBJECT_ROOT = "/subject";
 	
 }

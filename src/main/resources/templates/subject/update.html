@@ -18,11 +18,11 @@
             </div>
         </nav>
         
-        <h2>Actualizaci&oacute;n de Universidades</h2>
+        <h2>Actualizaci&oacute;n de Materias</h2>
   <div class="card bg-light col-md-7 mt-5 p-3 mx-auto">  
-   <form action="#" th:action="@{/university/update}" th:object="${university}"
+   <form action="#" th:action="@{/subject/update}" th:object="${subject}"
 	method="post">
-	<input type="hidden" th:field="*{id}" />
+	<input type="hidden" th:field="*{idSubject}" th:value="*{idSubject}" />
 	
  <div class="form-group">
                 <label for="name">Nombre</label>
@@ -30,36 +30,12 @@
             </div>
             
              
-	<input class="update" type="submit" value="Editar Universidad" />
+	<input class="update" type="submit" value="Editar Materia" />
 </form>
-<form action="#" th:action="@{/university/delete/{id}(id=${university.id})}" method="post">
-	<input class="btn btn-danger float-left ml-3  " type="submit" value="Borrar Universidad" />
+<form action="#" th:action="@{/subject/delete/{idSubject}(idSubject=${subject.idSubject})}" method="post">
+	<input class="btn btn-danger float-left ml-3  " type="submit" value="Borrar Materia" />
 </form>
 
-<br>
-		<br>
-		<h4>Carreras</h4>
-     <table class="table table-bordered table-stripped table-hover table-sm">
-	<thead class="thead-dark">
-		<tr>
-		            <th>Nombre</th>
-                   
-                    <th colspan="2" class="text-center">
-			<a href="/career/new" class="btn btn-success px-4"> 
-			<i class="far fa-plus-square fa-lg mr-2"></i> Agregar
-			</a></th>   
-		</tr>
-		</thead>
-	<tbody>
-		<tr th:each="career : ${careers}">
-		    <td><span th:text="${career.name}"/></span></td>
-			
-			<td><a th:href="@{/career/{idCareer}(idCareer=${career.idCareer})}"
-				class="btn btn-info px-4"><i
-					class="far fa-edit fa-lg mr-1"></i> Ver</a></td>
-		</tr>
-	  </tbody>
-     </table>
 </div>
 
     

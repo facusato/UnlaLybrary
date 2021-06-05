@@ -14,6 +14,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import com.unla.UnlaLybrary.helpers.ViewRouteHelper;
 import com.unla.UnlaLybrary.models.CareerModel;
 import com.unla.UnlaLybrary.service.ICareerService;
+import com.unla.UnlaLybrary.service.ISubjectService;
 import com.unla.UnlaLybrary.service.IUniversityService;
 
 @Controller
@@ -28,6 +29,10 @@ public class CareerController {
 	@Qualifier("universityService")
 	private IUniversityService universityService;
 	
+	@Autowired
+	@Qualifier("subjectService")
+	private ISubjectService subjectService;
+	
 	@GetMapping("")
 	public ModelAndView index() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.CAREER_INDEX);
@@ -41,6 +46,7 @@ public class CareerController {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.CAREER_NEW);
 		mAV.addObject("career", new CareerModel());
 		mAV.addObject("universities",universityService.getAlls());
+		mAV.addObject("subject",subjectService.getAlls());
 		return mAV;
 	}
 	
@@ -57,6 +63,7 @@ public class CareerController {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.CAREER_UPDATE); 
 		mAV.addObject("career", careerService.findByIdCareer(idCareer));
 		//mAV.addObject("universities",universityService.findById(idCareer));
+		mAV.addObject("subjects", subjectService.findByIdCareer(idCareer));
 		return mAV;
 	}
 	
