@@ -42,15 +42,16 @@
                 <div class="jumbotron">
                     <h1 style="text-align: center;">Un archivo</h1>
                 </div>
-                <form method="post" th:action="@{/file/upload}" enctype="multipart/form-data" id="fileUploadForm" class="container">
+                <form method="post" th:action="@{/uploadfile/upload}" enctype="multipart/form-data" id="fileUploadForm" class="container">
                     <div class="form-group">
                         <label class="custom-file" id="customFile">
-                            <input type="file" class="custom-file-input" name="file" aria-describedby="fileHelp">
-                            <span class="custom-file-control form-control-file"></span>
+                            <input type="file" name="pdffFile" id="pdffFile" required>
+                           <span class="custom-file-control form-control-file"></span>
                         </label>
                     </div>
                     <div style="margin-bottom: 10px">
                         <button type="submit" class="btn btn-success">Enviar</button>
+                        <embed id="vistaPrevia" type="application/pdf" width="400" height="400">
                     </div>
                 </form>
             </div>
@@ -60,7 +61,7 @@
                 <div class="jumbotron">
                     <h1 style="text-align: center;">M&uacute;ltiples archivos</h1>
                 </div>
-                <form method="post" th:action="@{/file/uploadMultiple}" enctype="multipart/form-data" id="fileUploadForm" class="container">
+                <form method="post" th:action="@{/uploadfile/uploadMultiple}" enctype="multipart/form-data" id="fileUploadForm" class="container">
                     <div class="form-group">
                         <label class="custom-file" id="customFile">
                             <input type="file" class="custom-file-input" name="files" aria-describedby="fileHelp">
@@ -90,4 +91,5 @@
     })
     
 </script>
+<script src="js/main.js"></script>
 </html>

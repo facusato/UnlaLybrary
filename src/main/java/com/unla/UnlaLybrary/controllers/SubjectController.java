@@ -16,6 +16,7 @@ import com.unla.UnlaLybrary.helpers.ViewRouteHelper;
 import com.unla.UnlaLybrary.models.SubjectModel;
 import com.unla.UnlaLybrary.service.ISubjectService;
 import com.unla.UnlaLybrary.service.ICareerService;
+import com.unla.UnlaLybrary.service.IFileService;
 
 @Controller
 @RequestMapping("/subject")
@@ -28,6 +29,10 @@ public class SubjectController {
 	@Autowired
 	@Qualifier("careerService")
 	private ICareerService careerService;
+	
+	@Autowired
+	@Qualifier("fileService")
+	private IFileService fileService;
 	
 	@GetMapping("")
 	public ModelAndView index() {
@@ -42,6 +47,7 @@ public class SubjectController {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SUBJECT_NEW);
 		mAV.addObject("subject", new SubjectModel());
 		mAV.addObject("careers",careerService.getAlls());
+		mAV.addObject("files",fileService.getAlls());
 		return mAV;
 	}
 	
@@ -57,7 +63,7 @@ public class SubjectController {
 	public ModelAndView get(@PathVariable("idSubject") long idSubject) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SUBJECT_UPDATE); 
 		mAV.addObject("subject", subjectService.findByIdSubject(idSubject));
-		//mAV.addObject("careers",careerService.findById(idSubject));
+		mAV.addObject("files",fileService.findByIdSubject(idSubject));
 		return mAV;
 	}
 	

@@ -28,6 +28,13 @@
                 <div class="invalid-feedback"></div>
             </div>
             
+            <div class="form-group">
+                <label for="career">Carrera</label>
+                <select placeholder="career" th:field="*{career.idCareer}">
+	            <option th:each="c : ${careers}" th:value="${c.idCareer}" th:text="${c.name}"></option>
+	             </select>     
+            </div>
+            
 
         
             

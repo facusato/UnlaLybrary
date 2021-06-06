@@ -18,7 +18,7 @@ import java.util.List;
 
 
 @Controller
-@RequestMapping("/file")
+@RequestMapping("/uploadfile")
 public class UploadFileController {
 
     @Autowired
@@ -26,19 +26,19 @@ public class UploadFileController {
 
     @GetMapping("")
     public ModelAndView index(){
-    	ModelAndView mAV = new ModelAndView(ViewRouteHelper.FILE_UPLOAD);
+    	ModelAndView mAV = new ModelAndView(ViewRouteHelper.FILE_UPLOADD);
     	return mAV;
 	
     }
 
     @PostMapping("/upload")
-    public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile file) {
-        if (file.isEmpty()) {
+    public ResponseEntity<?> uploadFile(@RequestParam("pdffFile") MultipartFile pdffFile) {
+        if (pdffFile.isEmpty()) {
             return new ResponseEntity<Object>("Seleccionar un archivo", HttpStatus.OK);
         }
 
         try {
-            uploadFileService.saveFile(file);
+            uploadFileService.saveFile(pdffFile);
         } catch (IOException e) {
             e.printStackTrace();
         }

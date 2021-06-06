@@ -62,7 +62,6 @@ public class CareerController {
 	public ModelAndView get(@PathVariable("idCareer") long idCareer) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.CAREER_UPDATE); 
 		mAV.addObject("career", careerService.findByIdCareer(idCareer));
-		//mAV.addObject("universities",universityService.findById(idCareer));
 		mAV.addObject("subjects", subjectService.findByIdCareer(idCareer));
 		return mAV;
 	}

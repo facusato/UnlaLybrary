@@ -1,5 +1,5 @@
  <!doctype html>
-<html lang="en">
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
      <link rel="stylesheet" href="/css/estilos.css">
      <link rel="stylesheet" href="/css/home.css">
@@ -18,11 +18,13 @@
                <a class="py-2 d-md-inline-block" href="/university">Adm.Universidades</a> 
                <a class="py-2 d-md-inline-block" href="/career">Adm.Carreras</a> 
                <a class="py-2 d-md-inline-block" href="/subject">Adm.Materias</a> 
+                <a class="py-2 d-md-inline-block" href="/file">Adm.Apuntes</a>
                <a class="py-2 d-md-inline-block" href="/contact">Quienes Somos</a> 
                  <li class="py-2 d-md-inline-block">
                       <a aria-expanded="false"
 						aria-haspopup="true" class="nav-link dropdown-toggle"
-						data-toggle="dropdown" href="#" id="navbarDropdownBlog">User<span th:text="${username}" />
+						data-toggle="dropdown" href="#" id="navbarDropdownBlog">
+						<span sec:authentication="name"></span>
 					   </a>					
 						<div aria-labelledby="navbarDropdownBlog" class="dropdown-menu dropdown-menu-right">
 							<form th:action="@{/logout}" method="post">
@@ -30,6 +32,7 @@
 							</form>
                         </div>
                        </li> 
+             
             </div>
         </nav>  
        <div class="card" style="width: 18rem;" >
