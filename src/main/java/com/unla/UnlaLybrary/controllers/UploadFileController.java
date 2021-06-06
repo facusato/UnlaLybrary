@@ -32,13 +32,13 @@ public class UploadFileController {
     }
 
     @PostMapping("/upload")
-    public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile file) {
-        if (file.isEmpty()) {
+    public ResponseEntity<?> uploadFile(@RequestParam("pdffFile") MultipartFile pdffFile) {
+        if (pdffFile.isEmpty()) {
             return new ResponseEntity<Object>("Seleccionar un archivo", HttpStatus.OK);
         }
 
         try {
-            uploadFileService.saveFile(file);
+            uploadFileService.saveFile(pdffFile);
         } catch (IOException e) {
             e.printStackTrace();
         }

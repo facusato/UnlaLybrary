@@ -61,10 +61,10 @@
 	            <option th:each="s : ${subjects}" th:value="${s.idSubject}" th:text="${s.name}"></option>
 	             </select>     
             </div>
-				<input class="btn btn-warning float-left" type="submit" value="Editar Carrera" />
+				<input class="btn btn-warning float-left" type="submit" value="Editar Apunte" />
 		</form>
 		<form action="#" th:action="@{/file/delete/{idFile}(idFile=${file.idFile})}"
 			method="post">
 			
-			<input class="btn btn-danger float-left ml-3" type="submit" value="Borrar Carrera" />
+			<input class="btn btn-danger float-left ml-3" type="submit" value="Borrar Apunte" />
 		</form>

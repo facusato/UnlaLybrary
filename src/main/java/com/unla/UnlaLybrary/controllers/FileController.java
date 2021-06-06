@@ -41,7 +41,7 @@ public class FileController {
 	public ModelAndView create() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.FILE_NEW);
 		mAV.addObject("file", new FileModel());
-		mAV.addObject("subject",subjectService.getAlls());
+		mAV.addObject("subjects",subjectService.getAlls());
 		return mAV;
 	}
 	
