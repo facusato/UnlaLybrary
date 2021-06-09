@@ -1,9 +1,10 @@
 package com.unla.UnlaLybrary.controllers;
 
-import java.io.BufferedOutputStream;
+
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
+
+import java.io.OutputStream;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -11,47 +12,40 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+
 
 @Controller
 public class FileDownloadController {
-	String folderPath="C:\\Users\\facun\\Spring-workspace\\UnlaLybrary\\src\\main\\resources\\files\\";
+	String folderPath="C:\\uploads";
 	
-	@RequestMapping("/files")
+	@RequestMapping("/f")
 	public String showFiles(Model model) {
 		File folder = new File(folderPath);
 		File[] listOfFiles = folder.listFiles();
 		model.addAttribute("files", listOfFiles);
 		return "showFiles";
 	}
-	@RequestMapping("/file/{fileName}")
-	@ResponseBody
-	public void show(@PathVariable("fileName") String fileName, HttpServletResponse response) {
-
-	      if (fileName.indexOf(".doc")>-1) response.setContentType("application/msword");
-	      if (fileName.indexOf(".docx")>-1) response.setContentType("application/msword");
-	      if (fileName.indexOf(".xls")>-1) response.setContentType("application/vnd.ms-excel");
-	      if (fileName.indexOf(".csv")>-1) response.setContentType("application/vnd.ms-excel");
-	      if (fileName.indexOf(".ppt")>-1) response.setContentType("application/ppt");
-	      if (fileName.indexOf(".pdf")>-1) response.setContentType("application/pdf");
-	      if (fileName.indexOf(".zip")>-1) response.setContentType("application/zip");
-	      response.setHeader("Content-Disposition", "attachment; filename=" +fileName);
-	      response.setHeader("Content-Transfer-Encoding", "binary");
-	      try {
-	    	  BufferedOutputStream bos = new BufferedOutputStream(response.getOutputStream());
-	    	  FileInputStream fis = new FileInputStream(folderPath+fileName);
-	    	  int len;
-	    	  byte[] buf = new byte[1024];
-	    	  while((len = fis.read(buf)) > 0) {
-	    		  bos.write(buf,0,len);
-	    	  }
-	    	  bos.close();
-	    	  response.flushBuffer();
-	      }
-	      catch(IOException e) {
-	    	  e.printStackTrace();
-	    	  
-	      }
+	
+	
+	@RequestMapping("/download/{fileName}")
+	public void download(@PathVariable("fileName") String fileName,HttpServletResponse response) throws Exception {
+		// Dirección del archivo, el entorno real se almacena en la base de datos
+		File file = new File("C:\\uploads\\"+fileName);
+		 // Llevando objeto de entrada
+		FileInputStream fis = new FileInputStream(file);
+		 // Establecer el formato relevante
+		response.setContentType("application/force-download");
+		 // Establecer el nombre y el encabezado del archivo descargado
+		response.addHeader("Content-disposition", "attachment;fileName=" + fileName);
+		 // Crear objeto de salida
+		OutputStream os = response.getOutputStream();
+		 // operación normal
+		byte[] buf = new byte[1024];
+		int len = 0;
+		while((len = fis.read(buf)) != -1) {
+			os.write(buf, 0, len);
+		}
+		fis.close();
 	}
-
+	
 }

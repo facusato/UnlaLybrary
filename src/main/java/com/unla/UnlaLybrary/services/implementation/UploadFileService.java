@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public class UploadFileService {
 
-    private String upload_folder = ".//src//main//resources//files//";
+    private String upload_folder = "C:\\uploads\\";
 
     public void saveFile(MultipartFile file) throws IOException {
         if(!file.isEmpty()){
