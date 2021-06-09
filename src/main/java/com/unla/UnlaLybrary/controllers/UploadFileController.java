@@ -1,8 +1,11 @@
 package com.unla.UnlaLybrary.controllers;
 
 import com.unla.UnlaLybrary.helpers.ViewRouteHelper;
+import com.unla.UnlaLybrary.service.ICareerService;
+import com.unla.UnlaLybrary.service.IFileService;
 import com.unla.UnlaLybrary.services.implementation.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -23,6 +26,11 @@ public class UploadFileController {
 
     @Autowired
     private UploadFileService uploadFileService;
+    
+    
+    @Autowired
+	@Qualifier("fileService")
+	private IFileService fileService;
 
     @GetMapping("")
     public ModelAndView index(){
@@ -39,6 +47,8 @@ public class UploadFileController {
 
         try {
             uploadFileService.saveFile(pdffFile);
+         
+           
         } catch (IOException e) {
             e.printStackTrace();
         }

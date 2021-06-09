@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -10,12 +11,21 @@
 <body>
 
   <div>
-    <h1>LISTA DE ARCHIVOS:</h1>
+    <h1>Listado de Apuntes:</h1>
     <div th:each="file: ${files}">
       <a th:href="@{'/file/'+${file.getName()}}"><span th:text="${file.getName()}"/></a>
       <span th:text="${file.length()/1024}"/>KB
+     <a th:href="@{'/download/'+${file.getName()}}" class="btn btn-outline-primary px-4">
+                            <i class="far fa-edit fa-lg mr-1"></i>
+                            Descargar
+      </a>            
+                        
     </div>
   </div>
-
+  
+  <a href="/" class="btn btn-outline-secondary ml-3">
+                Volver al Home
+            </a>
 </body>
+<script src="js/main.js"></script>
 </html>
