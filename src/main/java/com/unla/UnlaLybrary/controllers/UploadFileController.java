@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.io.IOException;
 import java.util.List;
@@ -40,9 +42,11 @@ public class UploadFileController {
     }
 
     @PostMapping("/upload")
-    public ResponseEntity<?> uploadFile(@RequestParam("pdffFile") MultipartFile pdffFile) {
+    public ModelAndView uploadFile(@RequestParam("pdffFile") MultipartFile pdffFile,RedirectAttributes redirectAttrs) {
         if (pdffFile.isEmpty()) {
-            return new ResponseEntity<Object>("Seleccionar un archivo", HttpStatus.OK);
+        	redirectAttrs.addFlashAttribute("mensaje","El apunte esta Vacio");
+			redirectAttrs.addFlashAttribute("clase", "danger");
+            
         }
 
         try {
@@ -52,21 +56,27 @@ public class UploadFileController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        return new ResponseEntity<Object>("Archivo subido correctamente", HttpStatus.OK);
+        
+        redirectAttrs.addFlashAttribute("mensaje","El apunte se cargo correctamente");
+		redirectAttrs.addFlashAttribute("clase", "danger");
+		ModelAndView mV = new ModelAndView(new RedirectView("/"));
+        return mV;
     }
     
     @PostMapping("/uploadMultiple")
-    public ResponseEntity uploadMultipleFiles(@RequestParam("files") List<MultipartFile> files){
+    public ModelAndView uploadMultipleFiles(@RequestParam("files") List<MultipartFile> files,RedirectAttributes redirectAttrs){
         if(files.size() == 0){
-            return new ResponseEntity("Seleccionar algun archivo",HttpStatus.OK);
+            
         }
         try {
             uploadFileService.saveMultipleFiles(files);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return new ResponseEntity("Archivos subidos correctamente",HttpStatus.OK);
+        redirectAttrs.addFlashAttribute("mensaje","Los apuntes se cargaron correctamente");
+		redirectAttrs.addFlashAttribute("clase", "danger");
+        ModelAndView mV = new ModelAndView(new RedirectView("/"));
+        return mV;
     }
     
     

@@ -1,25 +1,72 @@
  <!doctype html>
 <html xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
+
+     
+     <head>
+ 
      <link rel="stylesheet" href="/css/estilos.css">
-     <link rel="stylesheet" href="/css/home.css">
+     
+	<span th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" >
+	<link rel="stylesheet" href="/css/home.css">
+     </span>
+	
+
+     <span th:if="${#authorization.expression('hasRole(''ROLE_TEACHER'')')}" >
+     <link rel="stylesheet" href="/css/home2.css">
+     </span>
+     
+     <span th:if="${#authorization.expression('hasRole(''ROLE_STUDENT'')')}" >
+     <link rel="stylesheet" href="/css/homeAdmin.css">
+     </span>
+     
      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    
+    
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
+     <span th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" >
   <!-- Navigation -->
      <nav class="site-header sticky-top py-1">
             <div class="container d-flex flex-column flex-md-row justify-content-between">
             
-             <a class="py-2 d-md-inline-block" href="https://github.com/facusato/UnlaLybrary">GitHub Grupo 8</a> 
+             <a class="py-2 d-md-inline-block" href="https://github.com/facusato/UnlaLybrary">UnlaLybrary</a> 
                 <a class="py-2" href="/">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mx-auto"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
                 </a> 
-                
+               
                <a class="py-2 d-md-inline-block" href="/university">Adm.Universidades</a> 
                <a class="py-2 d-md-inline-block" href="/career">Adm.Carreras</a> 
                <a class="py-2 d-md-inline-block" href="/subject">Adm.Materias</a> 
-                <a class="py-2 d-md-inline-block" href="/file">Adm.Apuntes</a>
+               <a class="py-2 d-md-inline-block" href="/subject">Apuntes</a>
                <a class="py-2 d-md-inline-block" href="/contact">Quienes Somos</a> 
+               </span>
+               
+           <span th:if="${#authorization.expression('hasRole(''ROLE_TEACHER'')')}" >   
+           <!-- Navigation -->
+     		<nav class="site-header sticky-top py-1">
+           		 <div class="container d-flex flex-column flex-md-row justify-content-between">
+            
+           			  <a class="py-2 d-md-inline-block" href="https://github.com/facusato/UnlaLybrary">UnlaLybrary</a> 
+             		   <a class="py-2" href="/">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mx-auto"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
+               	 </a> 
+            
+               <a class="py-2 d-md-inline-block" href="/subject">Adm.Materias</a> 
+             
+           </span> 
+            <span th:if="${#authorization.expression('hasRole(''ROLE_STUDENT'')')}" >   
+           <!-- Navigation -->
+     		<nav class="site-header sticky-top py-1">
+           		 <div class="container d-flex flex-column flex-md-row justify-content-between">
+            
+           			  <a class="py-2 d-md-inline-block" href="https://github.com/facusato/UnlaLybrary">UnlaLybrary</a> 
+             		   <a class="py-2" href="/">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mx-auto"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
+               	 </a> 
+            
+               <a class="py-2 d-md-inline-block" href="/subject">Adm.Materias</a> 
+             
+           </span> 
                  <li class="py-2 d-md-inline-block">
                       <a aria-expanded="false"
 						aria-haspopup="true" class="nav-link dropdown-toggle"
@@ -35,15 +82,32 @@
              
             </div>
         </nav>  
+        
+
+     <span th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" >
        <div class="card" style="width: 18rem;" >
-  			<img src="https://ep01.epimg.net/economia/imagenes/2020/09/23/actualidad/1600882059_687303_1600885826_noticia_normal.jpg" class="card-img-top" alt="...">
+  			<img src="https://fotos.perfil.com/2019/07/18/trim/950/534/biblioteca-virtual-756955.jpg?webp" class="card-img-top" alt="...">
   				<div class="card-body">
-   					 <h5 class="card-title">Universidades</h5>
-   					 <p class="card-text">Ir a la p&aacute;gina de Universidades</p>
-   					 <a href="/university" class="btn btn-primary">Ir</a>
+   					 <h5 class="card-title">Bienvenido</h5>
+   					 <p class="card-text"><span sec:authentication="name"></span> que gusto verte nuevamente</p>
+   					 <a href="/university" class="btn btn-primary">VAMOS A DARLE VIDA A LA APP</a>
  				 </div>
-	</div>
-	
+ 				
+	  </div>
+	 </span>
+	 
+	  <span th:if="${#authorization.expression('hasRole(''ROLE_STUDENT'')')}" >
+       <div class="card" style="width: 18rem;" >
+  			<img src="https://memegenerator.net/img/instances/68457281/queda-1-semana-para-salvar-el-semestre.jpg" class="card-img-top" alt="...">
+  				<div class="card-body">
+   					 <h5 class="card-title">Bienvenido</h5>
+   					 <p class="card-text"><span sec:authentication="name"></span> que gusto verte nuevamente</p>
+   					 <a href="/subject" class="btn btn-primary">Ver Apuntes</a>
+ 				 </div>
+ 				
+	  </div>
+	 </span>
+
      
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
