@@ -1,0 +1,25 @@
+html {
+    position: relative;
+    min-height: 100%;
+    background-image: url(http://www.tuproyectodevida.pe/wp-content/uploads/2020/04/bibliotecasvirtuales-1200x628.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.title {
+	margin-top:50px;
+	margin-left: 35%;
+}
+
+.card {
+	margin-top:40px;
+	margin-left:600px;
+	float:left;
+}
+
+.card img {
+	width:286px;
+	height:160.81px;
+
+	}
+	
